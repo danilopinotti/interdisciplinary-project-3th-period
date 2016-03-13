@@ -1,6 +1,7 @@
 ## About Project
 System developed for a computer company service order management.
 UTFPR - Guarapuava - Technology for Internet Systems - 3th period - Web Development 2.
+Developed by: Danilo Pinotti(Back-end) and Marieli Antoniucci (Front-end)
 
 ### Getting Started
 1. Run the command ./scripts/setup.sh # to set application paths
