@@ -1,0 +1,197 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+body > .container {
+  padding: 60px 15px 20px 0;
+}
+.container .text-muted {
+  margin: 20px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
+}
+
+.btn-board {
+  margin: 5px;
+  width: 50px;
+  height: 50px;
+}
+
+.nav-second-level > li > a:before {
+  background: green;
+}
+
+.nav-second-level > li > a:after{
+  background: green;
+}
+
+
+.logo{
+  padding: initial;
+  width: 200px;
+  height: 70px;
+  margin-top: initial;
+}
+
+.logo-2{
+  margin-left: 15px;
+  padding: initial;
+  width: 200px;
+  height: 70px;
+  margin-top: initial;
+}
+
+h2, .h2 {
+  font-size: 30px;
+  color: green;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary.focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: #2E762E;
+  border-color: #2E762E;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #2E762E;
+  border-color: #2E762E;
+}
+.panel-default > .panel-heading {
+  color: #544B4B;
+  background-color: #ccc;
+  border-color: #ddd;
+}
+
+.row {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: rgb(169, 41, 41);
+  border-color: rgb(169, 41, 41);
+}
+
+.btn-danger:hover, .btn-danger:focus, .btn-danger:active, .btn-danger.active, .open .dropdown-toggle.btn-danger {
+  color: #fff;
+  background-color: rgb(169, 41, 41);
+  border-color: rgb(169, 41, 41);
+}
+
+.btn-success {
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #5cb85c;
+}
+
+.btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .open .dropdown-toggle.btn-success {
+  color: #fff;
+  background-color: #417641;
+  border-color: #417641;
+}
+
+.form-control-2 {
+  margin-left: 5px;
+  display: initial;
+  width: initial;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+  -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.radio-2, .checkbox-2 {
+  font-weight: normal;
+  display: inline-table;
+  min-height: 20px;
+  padding-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  vertical-align: initial;
+}
+
+.radio-2 label, .checkbox-2 label {
+  display: inline;
+  margin-bottom: 0;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+input, button, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  color: #333;
+}
+
+.img-adjust {
+  padding-left: 400px;
+  margin-top: -80px;
+}
+
+.login{
+  color: white;
+  padding: 15px 50px 5px 50px;
+  float: right;
+  font-size: 16px;
+}
+
+.autocomplete-suggestions {
+  background-color: #FFF;
+  border: 1px solid #A8A8A8;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.autocomplete-selected {
+  background-color: #EFEFEF;
+  cursor: pointer;
+}
+
+.active-menu.order-tabs a {
+  color: white;
+}
+
+.active-menu.order-tabs a:hover {
+  color: #FFF;
+  background-color: #008C48;
+  border: 1px solid #009B50;
+  /* margin: 0; */
+}

@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form action="<?= $this->action ?>" method="POST" role="form" name="form1">
+                        <div class="col-md-8">
+                          <div class="form-group">
+                            <label class="control-label" for="autocomplete_clients">Cliente: </label>
+                            <input type="text" class="form-control" name="" value="<?= $this->service_order->getClient() ? $this->service_order->getClient()->getName():'' ?>"
+                                   id="autocomplete_clients" placeholder="Digite o nome do cliente" 
+                                   data-url='<?= $this->urlFor('/clientes/autocomplete-search') ?>'>
+
+                            <input id="service_order_clients_id" type="hidden" class="form-control" name="service_order[clients_id]" value="<?= $this->service_order->getClient() ? $this->service_order->getClient()->getId():'' ?>">
+                            <span class='help-inline'><?= $this->service_order->errors('clients_id') ? $this->service_order->errors('clients_id') : '' ?></span>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                           <?= create_select_field($this->service_order, 'service_order', 'priorities_id', 'Prioridade: ', '',Priority::all(), (!empty($this->service_order->getPrioritiesId()))?$this->service_order->getPrioritiesId():'3',  true, array('value' => 'id', 'view' => 'name')); ?>
+
+                        </div>
+                        <div class="col-md-4">
+                           <?= create_select_field($this->service_order, 'service_order', 'employees_id', 'Técnico Responsável: ', '',Employee::all(), (!empty($this->service_order->getEmployeesId()))?$this->service_order->getEmployeesId():$_SESSION['user']['id'],  true, array('value' => 'id', 'view' => 'name')); ?>
+                        </div>
+                        <div class="col-md-11">
+                            <?= create_text_field($this->service_order, 'service_order','reported_problem', 'Problema apresentado: ')?>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group ">
+                                  <label for="service_order_prevision">Previsão: </label>
+                                  <input type="date" class="form-control" id="service_order_prevision" name="service_order[prevision]">
+                                  <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <?= create_text_field($this->service_order, 'service_order','observation', 'Observações: ')?>
+                        </div>
+                    <div style="clear: both"></div>
+                        <div class="floatright">
+                            <button type="submit" class="btn btn-primary"><?= $this->submit ?></button>
+                        </div>
+
+                        </form>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,159 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="logo-2">
+                <img class="logo" src="<?= ASSETS_FOLDER ?>/img/logo.png">
+            </div>
+        </div>
+        <div class="img-adjust">
+            <h4>Infotech Informática</h4>
+            <h5>Rua XV de Novembro, 589. Guarapuava - PR</h5>
+            <h6>www.infotec.com.br</h6>
+        </div>
+        <hr>
+
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                <h4>Dados da Ordem de Serviço</h4>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th><i class="fa fa-folder-open"></i> Número da O.S. </th>
+                            <th><i class="fa fa-calendar"></i> Data de Abertura </th>
+                            <th><i class="fa fa-flag"></i> Problema Relatado </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><?= $this->service_order->getId() ?></td>
+                            <td><?= $this->service_order->getOpeningDate()?></td>
+                            <td><?= $this->service_order->getReportedProblem() ?></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                <h4>Dados do cliente</h4>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th><i class="fa fa-user"></i> Nome do Cliente</th>
+                            <th><i class="fa fa-credit-card"></i>
+                                <?= ($this->service_order->getClient()->getClientType() == 'J')?'CNPJ ':'CPF '?>
+                            </th>
+                            <th><i class="fa fa-phone"></i> Telefone</th>
+                            <th><i class="fa fa-keyboard-o"></i> Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><?= $this->service_order->getClient()->getName() ?></td>
+                            <td><?= $this->service_order->getClient()->getDocument() ?></td>
+                            <td><?= $this->service_order->getClient()->getPhone() ?></td>
+                            <td><?= $this->service_order->getClient()->getEmail() ?></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                <h4>Lista de serviços</h4>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th><i class="fa fa-laptop"></i> Nome do Serviço</th>
+                            <th><i class="fa fa-pencil"></i> Descrição</th>
+                            <th><i class="fa fa-list"></i> Categoria</th>
+                            <th><i class="fa fa-dollar"></i> Valor Unitário</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($this->items_services as $item_service):?>
+                        <tr>
+                            <td><?= $item_service->getService()->getName() ?></td>
+                            <td><?= $item_service->getService()->getDescription() ?></td>
+                            <td><?= $item_service->getService()->getCategory()->getDescription()  ?></td>
+                            <td>R$ <?= $item_service->getService()->getCost() ?></td>
+                        </tr>
+                    <?php endforeach?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <form action="" method="POST">
+            <div class="panel panel-default">
+                <div class="panel-heading text-center">
+                    <h4>Descrição da ordem de serviço</h4>                
+                </div>
+                <div class="panel-body">
+                    <div class="col-md-4">
+                        <div class="form-group ">
+                          <label for="service_order_priorities_id">Prioridade: </label>
+                          <input type="text" class="form-control " id="service_order_priorities_id" name="service_order[priorities_id]" value="<?= $this->service_order->getPriority()->getName() ?>" disabled>
+                          <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group ">
+                          <label for="service_order_situations_id">Situação: </label>
+                          <input type="text" class="form-control " id="service_order_situations_id" name="service_order[situations_id]" value="<?= $this->service_order->getSituation()->getName() ?>" disabled>
+                          <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Previsão:</label>
+                            <input type="date" class="form form-control" name="service_order[prevision]" value="<?= $this->service_order->getPrevision() ?>" disabled>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group ">
+                          <label for="service_order_employees_id">Empregado: </label>
+                          <input type="text" class="form-control " id="service_order_employees_id" name="service_order[employees_id]" value="<?= $this->service_order->getEmployee()->getName() ?>" disabled>
+                          <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group ">
+                          <label for="service_order_total_cost">Valor total: </label>
+                          <input type="text" class="form-control " id="service_order_total_cost" name="service_order[total_cost]" placeholder="50" value="50" disabled>
+                          <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group ">
+                          <label for="service_order_observation">Observação: </label>
+                          <textarea class="form-control" id="service_order_observation" name="service_order[observation]" disabled></textarea>
+                          <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <div style="clear:both">
+                        <div class="floatright">
+                            <h2>Valor total: R$ <?= $this->service_order->getTotalCost() ?></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>  
+    </div>
+</div>
+
+
+
+
+
+
+
+

@@ -1,0 +1,18 @@
+<nav class="navbar-default navbar-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="main-menu">
+            <li>
+                <?= link_to('/ordens-servicos', '<i class="fa fa-table fa-3x"></i> Ordens de serviço', 'class="'.active_class('/ordens-servicos.*').'"') ?>
+            </li>
+            <li>
+                <?= link_to('/servicos', '<i class="fa fa-edit fa-3x"></i> Serviços', 'class="'.active_class('/servicos.*').'"') ?>
+            </li>
+            <li>
+                <?= link_to('/clientes', '<i class="fa fa-user fa-3x"></i> Clientes', 'class="'.active_class('/clientes.*').'"') ?>            
+            </li>
+            <li>
+                <?= link_to('/relatorios', '<i class="fa fa-bar-chart-o fa-3x"></i> Relatórios', 'class="'.active_class('/relatorios.*').'"') ?>
+            </li>
+        </ul>
+    </div>
+</nav>

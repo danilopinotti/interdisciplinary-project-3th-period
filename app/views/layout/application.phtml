@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"
+        />
+        <link rel="shortcut icon" type="image/png" href="<?= ASSETS_FOLDER ?>/img/favicon.png"/>
+        <title>
+            <?= APP_NAME ?>
+        </title>
+
+
+        <?php stylesheet_include_tag('/bootstrap/css/bootstrap.min.css','/bootstrap/css/font-awesome.css', 'custom.css', 'application.css', '/bootstrap/css/font-awesome.css'); ?>
+    </head>
+    
+    <body>
+        <div id="wrapper">
+            <?php require '_top.phtml'; ?>
+            <?php require (isset($_SESSION['user']['id']))?'_side_bar.phtml' : '_side_bar_not_authenticated.phtml'; ?>
+            <div id="page-wrapper">
+                <div id="page-inner">
+                    <?php if(isset($_SESSION['user']['id'])){
+                      require '_flash_messages.phtml';
+                      require $view;
+                     }
+                     else if ($_SERVER['REQUEST_URI'] == '/pi/login' || $_SERVER['REQUEST_URI'] == '/pi/'){
+                       require $view;
+                     }
+                     else {
+                      Flash::message('danger','Deve estar autenticado.');
+                      require '_flash_messages.phtml';
+                     }
+
+                     ?>
+
+                </div>
+                <!-- /. PAGE INNER -->
+            </div>
+            <!-- /. PAGE WRAPPER -->
+        </div>
+        <!-- /. WRAPPER -->
+        <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+        <!-- JQUERY SCRIPTS -->
+          <?php javascript_include_tag('jquery-1.10.2.min.js', 
+                                       'bootstrap.min.js', 
+                                       'jquery.metisMenu.js', 
+                                       'morris/raphael-2.1.0.min.js', 
+                                       'morris/morris.js',
+                                       'jquery.autocomplete.min.js',
+                                       'application.js'                       
+                                       ); ?>    
+        </script>
+    </body>
+
+</html>

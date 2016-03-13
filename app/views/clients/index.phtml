@@ -1,0 +1,40 @@
+<section>
+  <header>
+    <h2> <?= $this->title ?></h2>
+  </header>
+    <div class="btn-neworder">
+        <?= link_to('/clientes/fisico/cadastro', 'Novo cliente fisico', ' class="btn btn-primary"') ?>
+        <?= link_to('/clientes/juridico/cadastro', 'Novo cliente jurídico', ' class="btn btn-primary"') ?>
+    </div>
+  <hr>
+<div class="panel panel-default">
+  <table class="table table-striped table-bordered table-advance table-hover">
+  	<thead>
+  		<tr>
+  			<th><i class="fa fa-folder-open"></i> ID </th>
+  			<th><i class="fa fa-credit-card"></i> CPF/CNPJ </th>
+  			<th><i class="fa fa-user"></i> Nome </th>
+        <th><i class="fa fa-pencil"></i> Tipo </th>
+        <th><i class="fa fa-phone"></i> Telefone </th>
+        <th><i class="fa fa-cogs"></i> Ações </th>
+  		</tr>
+  	</thead>
+  	<tbody>
+  	<?php
+  	foreach ($this->clients as $client):?>
+  		<tr>
+  			<td><?= $client->getId() ?></td>
+  			<td><?= $client->getDocument()  ?></td>
+        <td><?= link_to("/clientes/{$client->getId()}", $client->getName()) ?></td>
+        <td><?= ($client->getClientType()=='J')? 'Jurídico' : 'Físico' ; ?></td>
+        <td><?= $client->getPhone()  ?></td>
+        <td>
+          <?= link_to("/clientes/".(($client->getClientType()=='J')? 'juridico' : 'fisico')."/{$client->getId()}/editar", 'Editar', 'class="btn btn-primary"') ?> 
+          <?= link_to("/clientes/{$client->getId()}/deletar", 'Excluir', 'class="btn btn-danger" data-confirm="Tem Certeza?"') ?>
+        </td>
+  		</tr>
+  	<?php endforeach?>
+  	</tbody>
+  </table>
+</div>
+</section>

@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>Cadastro de cliente juridico</h2>                        
+                        <hr>
+                        <form action="<?= $this->action ?>" method="POST" role="form" name="form1">
+                            <div class="col-md-8">
+                                <?= create_input_field($this->clientj, 'clientj','name', 'Nome fantasia: ', 'Insira o nome fantasia')?>
+                            </div>
+                            <div class="col-md-4">
+                                <?= create_input_field($this->clientj, 'clientj','cnpj', 'CNPJ: ', 'Insira o CNPJ do cliente')?>
+                            </div>
+                            <div class="col-md-5">
+                                <?= create_select_field($this->clientj, 'clientj', 'cities_id', 'Cidades: ', 'Selecione uma cidade',City::all(), $this->clientj->getCitiesId(),  true, array('value' => 'id', 'view' => 'name')); ?>
+                            </div>
+                            <div class="col-md-9">
+                                <?= create_input_field($this->clientj, 'clientj','address', 'Endereço: ', 'Insira o endereço')?>
+                            </div>
+                            <div class="col-md-4">
+                                <?= create_input_field($this->clientj, 'clientj','phone', 'Telefone para contato: ', 'Insira o telefone')?>
+                            </div>
+                            <div class="col-md-7">
+                                <?= create_input_field($this->clientj, 'clientj','email', 'Email: ', 'Insira o email')?>
+                            </div>
+                            <div class="col-md-5">
+                                <?= create_hidden_field('clientj', 'client_type', 'J') ?>
+                            </div>
+                            <div style="clear: both">
+                                <div class="floatright">
+                                    <button type="submit" class="btn btn-primary"><?= $this->submit ?></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

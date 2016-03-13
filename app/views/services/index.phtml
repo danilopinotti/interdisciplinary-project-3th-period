@@ -1,0 +1,39 @@
+<section>
+  <header>
+    <h2> <?= $this->title ?></h2>
+  </header>
+  <div class="btn-neworder">
+    <?= link_to('/servicos/novo', 'Novo Serviço', ' class="btn btn-primary"') ?>
+  </div>
+  <hr>
+  <div class="text-center">
+    <h4> Serviços em Andamento </h4>
+  </div>
+  <div class="panel panel-default">
+    <table class="table table-striped table-bordered table-advance table-hover">
+      <thead>
+        <tr>
+          <th><i class="fa fa-folder-open"></i> ID </th>
+          <th><i class="fa fa-laptop"></i> Nome do serviço </th>
+          <th><i class="fa fa-pencil"></i> Descrição </th>
+          <th><i class="fa fa-dollar"></i> Valor </th>
+          <th><i class="fa fa-cogs"></i> Ação </th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($this->services as $service):?>
+          <tr>
+            <td><?= $service->getId() ?></td>
+            <td><?= link_to("/servicos/{$service->getId()}", $service->getName()) ?></td>
+            <td><?= $service->getDescription()  ?></td>
+            <td>R$ <?= $service->getCost()  ?></td>
+            <td>
+              <?= link_to("/servicos/{$service->getId()}/editar", 'Editar', ' class="btn btn-primary"') ?> 
+              <?= link_to("/servicos/{$service->getId()}/deletar", 'Excluir', 'data-confirm="Tem Certeza?" class="btn btn-danger"') ?>
+            </td>
+          </tr>
+        <?php endforeach?>
+      </tbody>
+    </table>
+  </div>
+</section>

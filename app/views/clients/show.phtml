@@ -1,0 +1,47 @@
+<section>
+	<header>
+		<h2> <?= $this->title ?></h2>
+		<hr>
+	</header>
+  	<div class="panel panel-default">
+    	<table class="table table-striped table-bordered table-advance table-hover">
+		  <thead>
+	  		<tr>
+			  <th><i class="fa fa-folder-open"></i> ID </th>
+			  <th><i class="fa fa-user"></i> Nome </th>
+			  <?php if($this->client->getClientType() == 'J'): ?>
+				<th><i class="fa fa-credit-card"></i> CNPJ </th>
+			  <?php else: ?>
+				<th><i class="fa fa-credit-card"></i> CPF </th>
+			  <?php endif ?>
+			  <th><i class="fa fa-location-arrow"></i> Cidade </th>
+			  <th><i class="fa fa-map-marker"></i> Endereço </th>
+			  <th><i class="fa fa-phone"></i> Telefone </th>
+			  <th><i class="fa fa-keyboard-o"></i> Email </th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+		  	  <td><?= $this->client->getId() ?></td>
+   	  		  <td><?= $this->client->getName() ?></td>
+		  	  <?php if($this->client->getClientType() == 'J'): ?>
+		  	  	<td><?= $this->client->getCnpj() ?></td>
+			  <?php else: ?>
+			  	<td><?= $this->client->getCpf() ?></td>
+			  <?php endif ?>
+		  	  <td><?= $this->client->getCity()->getName() ?></td>
+		  	  <td><?= $this->client->getAddress() ?></td>
+		  	  <td><?= $this->client->getPhone() ?></td>
+		  	  <td><?= $this->client->getEmail() ?></td>
+			</tr>
+		  </tbody>
+		</table>
+	</div>
+</section>
+<div class="row">
+  	<div class="floatright">
+  		<?= link_to('/clientes', 'Voltar', ' class="btn btn-primary"') ?>
+  	</div>
+</div>
+
+

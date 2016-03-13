@@ -1,0 +1,106 @@
+<section>
+  <header>
+    <h2> <?= $this->title ?></h2>
+  </header>
+  <div class="btn-neworder">
+    <a class="btn btn-primary" <?= link_to('/ordens-servicos/novo', 'Nova Ordem de Serviço', 'class="'.active_class('/ordens-servicos.*').'"') ?>   
+  </div>
+  <hr>
+  <ul class="nav nav-tabs">
+    <li role="presentation" class="<?= active_class('/ordens-servicos') ?> order-tabs">
+        <?= link_to('/ordens-servicos', 'Ordens Ativas')?>
+    </li>
+    <li role="presentation"class="<?= active_class('/ordens-servicos/visualizar/reprovadas') ?> order-tabs">
+      <?= link_to('/ordens-servicos/visualizar/reprovadas', 'Ordens Reprovadas') ?>
+    </li>
+    <li role="presentation"class="<?= active_class('/ordens-servicos/visualizar/canceladas') ?> order-tabs">
+      <?= link_to('/ordens-servicos/visualizar/canceladas', 'Ordens Canceladas') ?>
+    </li>
+    <li role="presentation"class="<?= active_class('/ordens-servicos/visualizar/concluidas') ?> order-tabs">
+      <?= link_to('/ordens-servicos/visualizar/concluidas', 'Ordens Concluídas') ?>
+    </li>
+    <li role="presentation"class="<?= active_class('/ordens-servicos/visualizar/todas') ?> order-tabs">
+      <?= link_to('/ordens-servicos/visualizar/todas', 'Todas as ordens') ?>
+    </li>
+  </ul>
+  <div class="text-center">
+    <h4> Lista Geral </h4>
+  </div>
+  <div class="panel panel-default">
+    <table class="table table-striped table-bordered table-advance table-hover">
+      <thead>
+        <tr>
+          <th><i class="fa fa-folder-open"></i> ID</th>
+          <th><i class="fa fa-cogs"></i> Problema Encontrado</th>
+          <th><i class="fa fa-user"></i> Cliente</th>
+          <th><i class="fa fa-level-up"></i> Prioridade</th>
+          <th><i class="fa fa-flag"></i> Status</th>
+          <th><i class="fa fa-dollar"></i> Valor Total</th>
+          <th><i class="fa fa-cogs"></i> Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+          foreach ($this->service_orders as $so):?>
+          <tr>
+
+            <td><?= $so->getId() ?></td>
+            <td><?= 
+            ($so->getSituation()->getId() != '4') ? link_to('/ordens-servicos/'.$so->getId(), $so->getReportedProblem()) : $so->getReportedProblem() ?></td>
+            <td><?= $so->getClient()->getName() ?></td>
+            <td><?= $so->getPriority()->getName() ?></td>
+            <td><?= $so->getSituation()->getName()  ?></td>
+            <td>R$ <?= $so->getTotalCost() ?></td>
+            <td>
+              <?php 
+                  switch ($so->getSituation()->getId()) {
+                      case 0:
+                          echo "i equals 0";
+                          break;
+                      case 1:
+                      case 2:
+                          echo link_to("/ordens-servicos/{$so->getId()}/gerar-pdf", 'Gerar PDF', 'class="btn btn-primary"');
+                          echo link_to("/ordens-servicos/{$so->getId()}/cancelar", 'Cancelar', 'data-confirm="Tem Certeza?" class="btn btn-danger"');
+                          break;
+
+                      case 3:
+                          echo link_to("/ordens-servicos/{$so->getId()}/gerar-pdf", 'Gerar PDF', 'class="btn btn-primary"');
+                          echo link_to('/ordens-servicos/'.$so->getId(), $so->getReportedProblem());
+                          break;
+                      case 4:
+                      case 5:
+                          echo link_to("/ordens-servicos/{$so->getId()}/ver", 'Ver', 'class="btn btn-primary"');
+                          break;
+                      case 6:
+                          echo link_to("/ordens-servicos/{$so->getId()}/ver", 'Ver', 'class="btn btn-primary"');
+                          echo link_to("/ordens-servicos/{$so->getId()}/deletar", 'Excluir', 'data-confirm="Tem Certeza?" class="btn btn-danger"');
+                          break;
+
+                  }
+              ?> 
+            </td>
+          </tr>
+        <?php endforeach?>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<!-- 
+
+para filtrar por funcionario/idOS/cliente/situação
+
+
+<label>Procurar por</label>
+        <select class="form-control-2">
+          <option>Número da Ordem</option>
+          <option>Cliente</option>
+          <option>Funcionário</option>
+          <option>Situação</option>
+        </select>
+          <input type="text" class="form-control-2">
+            <a href="#" class="btn btn-primary" ><i class="fa fa-search"></i></a>
+        <hr>
+
+        -->
